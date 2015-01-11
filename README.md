@@ -15,7 +15,7 @@ $ npm install flux-constant
 
 ## Usage
 
-Create constants individually.
+Create constants one at a time.
 
 ```js
 var FluxConstant = require('flux-constant');
@@ -29,7 +29,7 @@ console.log(IMPORTANT_THING.toString());
 // IMPORTANT_THING
 ```
 
-Create a set of constants.
+Or create a set of them.
 
 ```js
 var FluxConstant = require('flux-constant');
@@ -47,7 +47,7 @@ console.log(Set);
 }
 */
 
-console.log(ActionTypes.SEND_REQUEST instanceof FluxConstant);
+console.log(Set.SEND_REQUEST instanceof FluxConstant);
 // true
 ```
 
@@ -80,7 +80,7 @@ var SignupConstants = {
 module.exports = SignupConstants;
 ```
 
-But we just created action types that could collide. Let's compare a bit:
+We just created action types that could collide though. Let's compare a bit:
 
 ```js
 var ContactConstants = require('./ContactConstants');
@@ -93,10 +93,12 @@ console.log(ContactActionTypes.SEND_REQUEST === SignupActionTypes.SEND_REQUEST);
 // true
 ```
 
-This could bite us if we use these two sets of constants in the same process.
-For example if a store was using these action types, it could get confused
-thinking an action was the one it was listening for, when it really wasn't.
-This is because we're just comparing simple strings.
+That's not exactly what we wanted. This could bite us if we use these two sets
+of constants in the same process.
+
+For example, if a Flux store was depending on these constants, it may take
+action on a payload it didn't intend to. This happens because we're just
+comparing strings.
 
 One way to fix this is creating longer, more unique names:
 
@@ -112,10 +114,11 @@ module.exports = ContactConstants;
 ```
 
 This doesn't seem like a great way to move forward though. These names can get
-out of control as the application grows.
+out of control as the application grows. Also, prefixing with `CONTACT_` feels
+like duplicating unnecessary information.
 
-So instead of passing around strings we can create objects that are unique. And
-best of all we can keep our simple naming conventions.
+So instead of passing around strings let's create objects that are unique
+(`new`). And best of all we can keep the simpler naming conventions.
 
 ```js
 var FluxConstant = require('flux-constant');
@@ -130,20 +133,22 @@ var ContactConstants = {
 module.exports = ContactConstants;
 ```
 
+We'll do the same thing as above but demonstrate the `set` shortcut.
+
 ```js
 var FluxConstant = require('flux-constant');
 
 var SignupConstants = {
-    ActionTypes: {
-        SEND_REQUEST: new FluxConstant('SEND_REQUEST'),
-        RECEIVE_RESPONSE: new FluxConstant('RECEIVE_RESPONSE')
-    }
+    ActionTypes: FluxConstant.set([
+        'SEND_REQUEST',
+        'RECEIVE_RESPONSE'
+    ])
 };
 
 module.exports = SignupConstants;
 ```
 
-And now they don't collide.
+And now they won't collide.
 
 ```js
 var ContactConstants = require('./ContactConstants');
@@ -155,3 +160,13 @@ SignupActionTypes = SignupConstants.ActionTypes;
 console.log(ContactActionTypes.SEND_REQUEST === SignupActionTypes.SEND_REQUEST);
 // false
 ```
+
+
+## License
+
+MIT
+
+
+## Don't forget
+
+What you create with `flux-constant` is more important than `flux-constant`.
