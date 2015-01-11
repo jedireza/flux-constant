@@ -1,0 +1,26 @@
+{
+  "name": "flux-constant",
+  "version": "1.0.0",
+  "description": "Unique constants for Flux apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab -c -L",
+    "test-cover": "lab -c -r html -o ./test/artifacts/coverage.html && open ./test/artifacts/coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedireza/flux-constant"
+  },
+  "keywords": [
+    "react",
+    "flux",
+    "constant",
+    "constants"
+  ],
+  "author": "Reza Akhavan",
+  "license": "MIT",
+  "devDependencies": {
+    "code": "^1.2.1",
+    "lab": "^5.2.0"
+  }
+}
