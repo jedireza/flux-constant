@@ -87,7 +87,7 @@ var ContactConstants = require('./ContactConstants');
 var SignupConstants = require('./SignupConstants');
 
 ContactActionTypes = ContactConstants.ActionTypes;
-SignupActionTypes = ContactConstants.ActionTypes;
+SignupActionTypes = SignupConstants.ActionTypes;
 
 console.log(ContactActionTypes.SEND_REQUEST === SignupActionTypes.SEND_REQUEST);
 // true
@@ -150,8 +150,8 @@ var ContactConstants = require('./ContactConstants');
 var SignupConstants = require('./SignupConstants');
 
 ContactActionsTypes = ContactConstants.ActionTypes;
-SignupActionsTypes = ContactConstants.ActionTypes;
+SignupActionsTypes = SignupConstants.ActionTypes;
 
-console.log(ContactActionTypes.SEND_REQUEST === ContactActionTypes.SEND_REQUEST);
+console.log(ContactActionTypes.SEND_REQUEST === SignupConstants.SEND_REQUEST);
 // false
 ```
