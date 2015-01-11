@@ -149,9 +149,9 @@ And now they don't collide.
 var ContactConstants = require('./ContactConstants');
 var SignupConstants = require('./SignupConstants');
 
-ContactActionsTypes = ContactConstants.ActionTypes;
-SignupActionsTypes = SignupConstants.ActionTypes;
+ContactActionTypes = ContactConstants.ActionTypes;
+SignupActionTypes = SignupConstants.ActionTypes;
 
-console.log(ContactActionTypes.SEND_REQUEST === SignupConstants.SEND_REQUEST);
+console.log(ContactActionTypes.SEND_REQUEST === SignupActionTypes.SEND_REQUEST);
 // false
 ```
