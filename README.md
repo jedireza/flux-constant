@@ -23,10 +23,10 @@ var FluxConstant = require('flux-constant');
 var IMPORTANT_THING = new FluxConstant('IMPORTANT_THING');
 
 console.log(IMPORTANT_THING);
-// { name: 'IMPORTANT_THING' }
+// { id: '1', name: 'IMPORTANT_THING' }
 
 console.log(IMPORTANT_THING.toString());
-// IMPORTANT_THING
+// 'IMPORTANT_THING'
 ```
 
 Or create a set of them.
@@ -42,8 +42,8 @@ var Set = FluxConstant.set([
 console.log(Set);
 /*
 {
-    SEND_REQUEST: { name: 'SEND_REQUEST' },
-    RECEIVE_RESPONSE: { name: 'RECEIVE_RESPONSE' }
+    SEND_REQUEST: { id: '2', name: 'SEND_REQUEST' },
+    RECEIVE_RESPONSE: { id: '3', name: 'RECEIVE_RESPONSE' }
 }
 */
 
@@ -159,6 +159,47 @@ SignupActionTypes = SignupConstants.ActionTypes;
 
 console.log(ContactActionTypes.SEND_REQUEST === SignupActionTypes.SEND_REQUEST);
 // false
+```
+
+
+## Unique strings
+
+If for some reason we wanted to work with string values instead of object
+instances, we can `stringify` an instance like so:
+
+```js
+var IMPORTANT_FOO = new FluxConstant('IMPORTANT_THING');
+
+console.log(IMPORTANT_FOO.stringify());
+// '{"id":"5","name":"IMPORTANT_THING"}'
+```
+
+`stringify` creates _deterministic_, `JSON` compatable strings. And since the
+values are valid `JSON`, we're able to parse these values back into instances.
+
+```js
+var payload = '{"id":"5","name":"IMPORTANT_THING"}';
+var IMPORTANT_BAR = FluxConstant.parse(payload);
+
+console.log(IMPORTANT_BAR.id);
+// '5'
+
+console.log(IMPORTANT_BAR.name);
+// 'IMPORTANT_THING'
+
+console.log(IMPORTANT_BAR.stringify());
+// '{"id":"5","name":"IMPORTANT_THING"}';
+```
+
+Remember for this to be useful, you must to stick with the `stringify` values.
+And that's because the _instances_ are still unique.
+
+```js
+console.log(IMPORTANT_FOO === IMPORTANT_BAR);
+// false
+
+console.log(IMPORTANT_FOO.stringify() === IMPORTANT_BAR.stringify());
+// true
 ```
 
 

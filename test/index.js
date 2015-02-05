@@ -24,12 +24,61 @@ lab.experiment('FluxConstant', function () {
     });
 
 
-    lab.test('it demonstrates string casting', function (done) {
+    lab.test('it creates a new constant with an id', function (done) {
+
+        var TEST_IT = new FluxConstant('TEST_IT', '99');
+
+        Code.expect(TEST_IT).to.be.an.instanceOf(FluxConstant);
+        Code.expect(TEST_IT.id).to.be.equal('99');
+        done();
+    });
+
+
+    lab.test('it demonstrates toString', function (done) {
 
         var TESTING_IT = new FluxConstant('TESTING_IT');
 
-        Code.expect(TESTING_IT).to.be.an.instanceOf(FluxConstant);
         Code.expect(TESTING_IT.toString()).to.equal('TESTING_IT');
+        done();
+    });
+
+
+    lab.test('it demonstrates stringify', function (done) {
+
+        FluxConstant.lastId = 0;
+
+        var fixture = '{"id":"1","name":"STRINGIFY_IT"}';
+        var SERIALIZE_IT = new FluxConstant('STRINGIFY_IT');
+
+        Code.expect(SERIALIZE_IT.stringify()).to.equal(fixture);
+        done();
+    });
+
+
+    lab.test('it demonstrates parse', function (done) {
+
+        var fixture = '{"id":"5","name":"PARSE_IT"}';
+        var PARSE_IT = FluxConstant.parse(fixture);
+
+        Code.expect(PARSE_IT).to.be.an.instanceOf(FluxConstant);
+        Code.expect(PARSE_IT.name).to.equal('PARSE_IT');
+        Code.expect(PARSE_IT.id).to.equal('5');
+        Code.expect(PARSE_IT.stringify()).to.equal(fixture);
+
+        done();
+    });
+
+
+    lab.test('it demonstrates parse without an id', function (done) {
+
+        FluxConstant.lastId = 0;
+
+        var payload = '{"name":"PARSE_IT"}';
+        var PARSE_IT = FluxConstant.parse(payload);
+
+        Code.expect(PARSE_IT).to.be.an.instanceOf(FluxConstant);
+        Code.expect(PARSE_IT.name).to.equal('PARSE_IT');
+        Code.expect(PARSE_IT.id).to.equal('1');
 
         done();
     });
