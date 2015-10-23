@@ -2,8 +2,8 @@
 
 Unique constants for Flux apps.
 
-[![devDependency Status](https://david-dm.org/jedireza/flux-constant/dev-status.svg?theme=shields.io)](https://david-dm.org/jedireza/flux-constant#info=devDependencies)
 [![Build Status](https://travis-ci.org/jedireza/flux-constant.svg?branch=master)](https://travis-ci.org/jedireza/flux-constant)
+[![devDependency Status](https://david-dm.org/jedireza/flux-constant/dev-status.svg?theme=shields.io)](https://david-dm.org/jedireza/flux-constant#info=devDependencies)
 
 
 ## Install

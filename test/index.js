@@ -37,7 +37,7 @@ lab.experiment('FluxConstant', function () {
 
     lab.test('it creates a set of constants', function (done) {
 
-        var Set = FluxConstant.set([ 'ONE', 'TWO', 'THREE' ]);
+        var Set = FluxConstant.set(['ONE', 'TWO', 'THREE']);
 
         Code.expect(Set).to.be.an.object();
         Code.expect(Set.ONE).to.be.an.instanceOf(FluxConstant);
