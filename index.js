@@ -1,4 +1,4 @@
-var FluxConstant = function FluxConstant(name) {
+var FluxConstant = function FluxConstant (name) {
 
     this.name = name;
 };
