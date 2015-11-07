@@ -1,3 +1,5 @@
+'use strict';
+
 var FluxConstant = function FluxConstant (name) {
 
     this.name = name;
