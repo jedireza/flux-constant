@@ -1,32 +1,34 @@
-var Lab = require('lab');
-var Code = require('code');
-var FluxConstant = require('../index');
+'use strict';
+
+const Lab = require('lab');
+const Code = require('code');
+const FluxConstant = require('../index');
 
 
-var lab = exports.lab = Lab.script();
+const lab = exports.lab = Lab.script();
 
 
-lab.experiment('FluxConstant', function () {
+lab.experiment('FluxConstant', () => {
 
-    lab.test('it loads', function (done) {
+    lab.test('it loads', (done) => {
 
         Code.expect(FluxConstant).to.be.a.function();
         done();
     });
 
 
-    lab.test('it creates a new constant', function (done) {
+    lab.test('it creates a new constant', (done) => {
 
-        var TEST_IT = new FluxConstant('TEST_IT');
+        const TEST_IT = new FluxConstant('TEST_IT');
 
         Code.expect(TEST_IT).to.be.an.instanceOf(FluxConstant);
         done();
     });
 
 
-    lab.test('it demonstrates string casting', function (done) {
+    lab.test('it demonstrates string casting', (done) => {
 
-        var TESTING_IT = new FluxConstant('TESTING_IT');
+        const TESTING_IT = new FluxConstant('TESTING_IT');
 
         Code.expect(TESTING_IT).to.be.an.instanceOf(FluxConstant);
         Code.expect(TESTING_IT.toString()).to.equal('TESTING_IT');
@@ -35,9 +37,9 @@ lab.experiment('FluxConstant', function () {
     });
 
 
-    lab.test('it creates a set of constants', function (done) {
+    lab.test('it creates a set of constants', (done) => {
 
-        var Set = FluxConstant.set(['ONE', 'TWO', 'THREE']);
+        const Set = FluxConstant.set(['ONE', 'TWO', 'THREE']);
 
         Code.expect(Set).to.be.an.object();
         Code.expect(Set.ONE).to.be.an.instanceOf(FluxConstant);
