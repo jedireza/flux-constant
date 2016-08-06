@@ -20,7 +20,7 @@
   "author": "Reza Akhavan",
   "license": "MIT",
   "devDependencies": {
-    "code": "2.x.x",
+    "code": "3.x.x",
     "eslint-config-hapi": "9.x.x",
     "eslint-plugin-hapi": "4.x.x",
     "lab": "10.x.x"
