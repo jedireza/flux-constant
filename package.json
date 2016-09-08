@@ -1,6 +1,6 @@
 {
   "name": "flux-constant",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Unique constants for Flux apps.",
   "main": "index.js",
   "scripts": {
